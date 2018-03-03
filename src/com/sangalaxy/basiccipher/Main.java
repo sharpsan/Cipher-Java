@@ -28,10 +28,10 @@ public class Main {
         rotCipher.crypt(cryptType, message);
 
         // prompt user to run again
-        System.out.print("\nRun again?  Yes(1)  No(2): ");
+        System.out.print("\nRun again?  Yes(y)  No(n): ");
         //get their input
-        int runAgain = scanner.nextInt();
-        if(runAgain == 1) {
+        String runAgain = scanner.next();
+        if(yesCmds(runAgain)) {
             System.out.println("\n---------------------");
             main( new String[0]);
         } else {
@@ -45,5 +45,24 @@ public class Main {
     private static String readString() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+
+    private static boolean yesCmds(String input) {
+        boolean result = false; // init as false
+        String[] matches = new String[] {
+                "y",
+                "yes",
+                "1",
+                "ok"
+        };
+
+        for(String match : matches) {
+            if(input.contains(match)) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
     }
 }
