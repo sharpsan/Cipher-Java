@@ -1,14 +1,14 @@
-package com.sangalaxy.basiccypher;
+package com.sangalaxy.basiccipher;
 
 import java.util.HashMap;
 
-public class Cypher1 {
+public class Cipher1 {
 
     private final HashMap<String, Integer> letterNumHashMap;
     private final HashMap<Integer, String> numLetterHashMap;
     private final int rot;
 
-    public Cypher1(int rot) {
+    public Cipher1(int rot) {
         this.letterNumHashMap = buildLetterNumHashMap();
         this.numLetterHashMap = buildNumLetterHashMap();
         this.rot = rot;
@@ -22,23 +22,23 @@ public class Cypher1 {
         for(char character: characters) {
             String characterString = String.valueOf(character);
             if(!characterString.equals(" ") && !characterString.equals("")) {
-                String cypheredChar = "";
+                String cipheredChar = "";
                 if(cryptType == Constants.ROT_UP) {
-                    cypheredChar = rotChar(characterString, Constants.ROT_UP);
+                    cipheredChar = rotChar(characterString, Constants.ROT_UP);
                 } else if(cryptType == Constants.ROT_DOWN) {
-                    cypheredChar = rotChar(characterString, Constants.ROT_DOWN);
+                    cipheredChar = rotChar(characterString, Constants.ROT_DOWN);
                 }
 
-                System.out.println("original: " + character + ", cypher'd: " +  cypheredChar);
-                output += cypheredChar;
+                System.out.println("original: " + character + ", cipher'd: " +  cipheredChar);
+                output += cipheredChar;
             } else {
                 output += character;
                 System.out.println("");
             }
         }
 
-        System.out.println("------ complete cypher'd message ------");
-        System.out.println(output);
+        System.out.println("------ complete cipher'd message ------");
+        System.out.println("---> " + output);
         return output;
     }
 
@@ -47,20 +47,22 @@ public class Cypher1 {
         int letterNum = letterNumHashMap.get(String.valueOf(character));
 
         //specify direction
-        int cypherNum = -1;
+        int cipherNum = -1;
         if(direction == Constants.ROT_UP) {
-            cypherNum = letterNum + rot;
+            cipherNum = letterNum + rot;
         } else if(direction == Constants.ROT_DOWN){
-            cypherNum = letterNum - rot;
+            cipherNum = letterNum - rot;
         }
 
-        cypherNum = (direction == Constants.ROT_UP) ? letterNum + rot : letterNum - rot; //if direction is up, increase by rot, otherwise decrease
-        if(cypherNum > Constants.ALPHABET_SIZE) {
-            cypherNum = cypherNum - Constants.ALPHABET_SIZE;
+        cipherNum = (direction == Constants.ROT_UP) ? letterNum + rot : letterNum - rot; //if direction is up, increase by rot, otherwise decrease
+        if(cipherNum > Constants.ALPHABET_SIZE) {
+            cipherNum = cipherNum - Constants.ALPHABET_SIZE;
+        } else if(cipherNum <= 0) {
+            cipherNum = Constants.ALPHABET_SIZE + cipherNum;
         }
 
-        String cypherNumLetter = numLetterHashMap.get(cypherNum);
-        output = cypherNumLetter;
+        String cipherNumLetter = numLetterHashMap.get(cipherNum);
+        output = cipherNumLetter;
         return output;
     }
 

@@ -1,4 +1,4 @@
-package com.sangalaxy.basiccypher;
+package com.sangalaxy.basiccipher;
 
 public class Constants {
     public static final int ROT_UP = 1;
