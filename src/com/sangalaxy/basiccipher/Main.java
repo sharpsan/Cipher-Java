@@ -24,8 +24,8 @@ public class Main {
         String message = readString();
 
         //begin cipher conversion
-        Cipher1 cipher1 = new Cipher1(rot);
-        cipher1.crypt(cryptType, message);
+        RotCipher rotCipher = new RotCipher(rot);
+        rotCipher.crypt(cryptType, message);
 
         // prompt user to run again
         System.out.print("\nRun again?  Yes(1)  No(2): ");

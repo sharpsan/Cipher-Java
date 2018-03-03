@@ -2,13 +2,13 @@ package com.sangalaxy.basiccipher;
 
 import java.util.HashMap;
 
-public class Cipher1 {
+public class RotCipher {
 
     private final HashMap<String, Integer> letterNumHashMap;
     private final HashMap<Integer, String> numLetterHashMap;
     private final int rot;
 
-    public Cipher1(int rot) {
+    public RotCipher(int rot) {
         this.letterNumHashMap = buildLetterNumHashMap();
         this.numLetterHashMap = buildNumLetterHashMap();
         this.rot = rot;
