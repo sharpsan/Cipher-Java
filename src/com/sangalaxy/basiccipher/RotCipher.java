@@ -56,7 +56,7 @@ public class RotCipher {
         //fix if letter wraps around
         if(cipherNum > Constants.ALPHABET_SIZE) {
             cipherNum = cipherNum - Constants.ALPHABET_SIZE;
-        } else if(cipherNum <= 0) {
+        } else if(cipherNum < 1) {
             cipherNum = Constants.ALPHABET_SIZE + cipherNum;
         }
 
