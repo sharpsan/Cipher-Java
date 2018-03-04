@@ -4,14 +4,20 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    private static int rotHistory;
+
+    public static void main(String[] args)  {
+        //init vars
+        initRotHistory(args);
+
         // create a scanner so we can read the command-line input
         Scanner scanner = new Scanner(System.in);
 
         // prompt user to enter rot num
-        System.out.print("Enter rot value: ");
+        System.out.print("Enter rot value" + showRotHistoryHint(rotHistory) + ": ");
         // get their input
         int rot = scanner.nextInt();
+        rotHistory = rot; //update history
 
         // prompt user to select either cipher or decipher
         System.out.print("Cipher(1)  Decipher(2): ");
@@ -33,7 +39,9 @@ public class Main {
         String runAgain = scanner.next();
         if(yesCmds(runAgain)) {
             System.out.println("\n---------------------");
-            main( new String[0]);
+            main( new String[] {
+                    String.valueOf(rotHistory) //pass history
+            });
         } else {
             System.out.println("Exiting...");
             scanner.close();
@@ -64,5 +72,17 @@ public class Main {
         }
 
         return result;
+    }
+
+    private static String showRotHistoryHint(int rotHistory) {
+        return (rotHistory > -1) ? " (last rot: " + rotHistory + ")" : "";
+    }
+
+    private static void initRotHistory(String[] stringArr) {
+        if(stringArr.length > 0) {
+            rotHistory = Integer.valueOf(stringArr[0]);
+        } else {
+            rotHistory = -1;
+        }
     }
 }

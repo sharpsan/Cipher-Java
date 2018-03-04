@@ -132,4 +132,5 @@ public class RotCipher {
 
         return numLetterHashMap;
     }
+
 }
