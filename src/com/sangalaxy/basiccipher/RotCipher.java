@@ -46,15 +46,9 @@ public class RotCipher {
         String output;
         int letterNum = letterNumHashMap.get(String.valueOf(character));
 
-        //specify direction
-        int cipherNum = -1;
-        if(direction == Constants.ROT_UP) {
-            cipherNum = letterNum + rot;
-        } else if(direction == Constants.ROT_DOWN){
-            cipherNum = letterNum - rot;
-        }
-
-        cipherNum = (direction == Constants.ROT_UP) ? letterNum + rot : letterNum - rot; //if direction is up, increase by rot, otherwise decrease
+        //get index of new letter
+        int cipherNum = (direction == Constants.ROT_UP) ? letterNum + rot : letterNum - rot; //if direction is up, increase by rot, otherwise decrease
+        //fix if letter wraps around
         if(cipherNum > Constants.ALPHABET_SIZE) {
             cipherNum = cipherNum - Constants.ALPHABET_SIZE;
         } else if(cipherNum <= 0) {
