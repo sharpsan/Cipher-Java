@@ -2,6 +2,7 @@
 
 ### Example
 This shows a cipher test by running the jar file in a terminal.
+
 ![gif example](capture/Peek 2018-03-03_22-25.gif)
 
 ### Download
