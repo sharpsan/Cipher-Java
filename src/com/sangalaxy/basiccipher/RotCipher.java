@@ -18,7 +18,12 @@ public class RotCipher {
         String output = "";
         String inputToLowercase = input.toLowerCase();
         char[] characters = inputToLowercase.toCharArray();
+        System.out.println("=====================");
+        System.out.println("       RESULTS       ");
+        System.out.println("=====================");
         System.out.println("------ verbose ------");
+        System.out.println(" ORIGINAL | CIPHER'D");
+        System.out.print("");
         for(char character: characters) {
             String characterString = String.valueOf(character);
             if(!characterString.equals(" ") && !characterString.equals("")) {
@@ -29,11 +34,11 @@ public class RotCipher {
                     cipheredChar = rotChar(characterString, Constants.ROT_DOWN);
                 }
 
-                System.out.println("original: " + character + ", cipher'd: " +  cipheredChar);
+                System.out.println("        " + character + " | " +  cipheredChar + "        ");
                 output += cipheredChar;
             } else {
                 output += character;
-                System.out.println("");
+                System.out.println("          |");
             }
         }
 
